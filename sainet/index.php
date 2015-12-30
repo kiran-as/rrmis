@@ -359,28 +359,22 @@
                 <ul id="mycarouseltwo" class="jcarousel-skin-tango-two">
             		
                     <li>
-                        <p>Lorem Ipsum which looks reasonable generate orem Ipsum this always free from repetition injected humour non chara teristic words sum passages more recently with desktop publishing software like pageMaker including versions randomised in words which of Ipsum, you need to be sure there hidden in the middles. Sure there anything in the words embarrassing hidde nmiddle simply dummy text versions.</p>
+                        <p>I am very happy to tell like, i am getting very speed internet and high quality customer support with 24*7. The technical team is very efficient and prompt in responding the queries. The important functionality in Sainet is we can easily modify the plans according to our convieant. </p>
                         <div class="who_peoarea">
-                        <img src="http://placehold.it/46x46" alt="" class="client_img" />
-                        <strong>Noraty Gates <em>(www.website.com)</em> <i>customer</i></strong>
+                        <img src="new images/client3.png" alt="" class="client_img" />
+                        <strong>Sai Sangam <em>(http://hotelsaisangamshirdi.com/)</em> <i>customer</i></strong>
                         </div>
                     </li>
                     
                     <li>
-                        <p>Lorem Ipsum which looks reasonable generate orem Ipsum this always free from repetition injected humour non chara teristic words sum passages more recently with desktop publishing software like pageMaker including versions randomised in words which of Ipsum, you need to be sure there hidden in the middles. Sure there anything in the words embarrassing hidde nmiddle simply dummy text versions.</p>
+                        <p>I am thankful to the technical team of SAINET, which they have taken care of complete wifi facility in our hotel, with high up and running. The router which they have placed in proper way helps the customer to access easily in entire hotel. They are highly specialised people in setting up the internet accessibility.</p>
                         <div class="who_peoarea">
-                        <img src="http://placehold.it/46x46" alt="" class="client_img" />
-                        <strong>Lucia Florenceancy <em>(www.website.com)</em> <i>customer</i></strong>
+                        <img src="new images/client4.jpg" alt="" class="client_img" />
+                        <strong>Sun n Sand <em>(www.website.com)</em> <i>customer</i></strong>
                         </div>
                     </li> 
                     
-                    <li>
-                        <p>Lorem Ipsum which looks reasonable generate orem Ipsum this always free from repetition injected humour non chara teristic words sum passages more recently with desktop publishing software like pageMaker including versions randomised in words which of Ipsum, you need to be sure there hidden in the middles. Sure there anything in the words embarrassing hidde nmiddle simply dummy text versions.</p>
-                        <div class="who_peoarea">
-                        <img src="http://placehold.it/46x46" alt="" class="client_img" />
-                        <strong>Mark Adraison <em>(www.website.com)</em> <i>customer</i></strong>
-                        </div>
-                    </li>
+                   
                          
     			</ul>
     
