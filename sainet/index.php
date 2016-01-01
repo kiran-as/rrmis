@@ -62,9 +62,124 @@
     <!-- jquery jcarousel -->
     <link rel="stylesheet" type="text/css" href="js/jcarousel/skin.css" />
     
-</head>
+<link href="cnt/css/style.css" rel="stylesheet" type="text/css" />
 
+<script type="text/javascript" src="cnt/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+
+    var _scroll = true, _timer = false, _floatbox = $("#contact_form"), _floatbox_opener = $(".contact-opener") ;
+    _floatbox.css("right", "-322px"); //initial contact form position
+    
+    //Contact form Opener button
+    _floatbox_opener.click(function(){
+        if (_floatbox.hasClass('visiable')){
+            _floatbox.animate({"right":"-322px"}, {duration: 300}).removeClass('visiable');
+        }else{
+           _floatbox.animate({"right":"0px"},  {duration: 300}).addClass('visiable');
+        }
+    });
+    
+    //Effect on Scroll
+    $(window).scroll(function(){
+        if(_scroll){
+            _floatbox.animate({"top": "30px"},{duration: 300});
+            _scroll = false;
+        }
+        if(_timer !== false){ clearTimeout(_timer); }           
+            _timer = setTimeout(function(){_scroll = true; 
+            _floatbox.animate({"top": "10px"},{easing: "linear"}, {duration: 500});}, 400); 
+    });
+    
+    
+    //Ajax form submit
+    $("#submit_btn").click(function() { 
+        var proceed = true;
+        //simple validation at client's end
+        //loop through each field and we simply change border color to red for invalid fields       
+        $("#contact_form input[required=true], #contact_form textarea[required=true]").each(function(){
+            $(this).css('border-color',''); 
+            if(!$.trim($(this).val())){ //if this field is empty 
+                $(this).css('border-color','red'); //change border color to red   
+                proceed = false; //set do not proceed flag
+            }
+            //check invalid email
+            var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
+            if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))){
+                $(this).css('border-color','red'); //change border color to red   
+                proceed = false; //set do not proceed flag              
+            }   
+        });
+       
+        if(proceed) //everything looks good! proceed...
+        {
+            //get input field values data to be sent to server
+            post_data = {
+                'user_name'     : $('input[name=name]').val(), 
+                'user_email'    : $('input[name=email]').val(), 
+                'country_code'  : $('input[name=phone1]').val(), 
+                'phone_number'  : $('input[name=phone2]').val(), 
+                'subject'       : $('select[name=subject]').val(), 
+                'msg'           : $('textarea[name=message]').val()
+            };
+            
+            //Ajax post data to server
+            $.post('contact_me.php', post_data, function(response){  
+                if(response.type == 'error'){ //load json data from server and output message     
+                    output = '<div class="error">'+response.text+'</div>';
+                }else{
+                    output = '<div class="success">'+response.text+'</div>';
+                    //reset values in all input fields
+                    $("#contact_form  input[required=true], #contact_form textarea[required=true]").val(''); 
+                }
+                $("#contact_form #contact_results").hide().html(output).slideDown();
+            }, 'json');
+        }
+    });
+    
+    //reset previously set border colors and hide all message on .keyup()
+    $("#contact_form  input[required=true], #contact_form textarea[required=true]").keyup(function() { 
+        $(this).css('border-color',''); 
+        $("#result").slideUp();
+    });
+    
+});
+</script>
+</head>
 <body>
+
+<!-- contact form start -->
+<div class="floating-form" id="contact_form">
+<div class="contact-opener">Open Contact Form</div>
+    <div class="floating-form-heading">Please Contact Us</div>
+    <div id="contact_results"></div>
+    <div id="contact_body">
+        <label><span>Name <span class="required">*</span></span>
+            <input type="text" name="name" id="name" required="true" class="input-field">
+        </label>
+        <label><span>Email <span class="required">*</span></span>
+            <input type="email" name="email" required="true" class="input-field">
+        </label>
+        <label><span>Phone <span class="required">*</span></span>
+            <input type="text" name="phone1" maxlength="4" placeholder="+91" required="true" class="tel-number-field">
+            —<input type="text" name="phone2" maxlength="15" required="true" class="tel-number-field long">
+        </label>
+        <label for="subject"><span>Regarding</span>
+            <select name="subject" class="select-field">
+            <option value="General Question">General Question</option>
+            <option value="Advertise">Advertisement</option>
+            <option value="Partnership">Partnership Oppertunity</option>
+            </select>
+        </label>
+            <label for="field5"><span>Message <span class="required">*</span></span>
+            <textarea name="message" id="message" class="textarea-field" required="true"></textarea>
+        </label>
+        <label>
+            <span>&nbsp;</span><input type="submit" id="submit_btn" value="Submit">
+        </label>
+    </div>
+</div>
+<!-- contact form end -->
 
 <div class="site_wrapper">
 	
@@ -95,6 +210,30 @@
                         	<div class="text7"><span>from only<br /><i>675.99</i>/m</span></div>
 						</div>
                         </div>
+                        <div class = 'item item3'>
+                            <div class = 'inner'>                           
+                                <div class = 'text1'><span>Connect to Entire World</span></div>
+                                <div class = 'text2'><span>Connect with Google, Facebook, Twitter etc<br/><br/>One Time Configuration<br/><br/>Unlimited Connection <br/><br/>Keep In Touch With People</span></div>
+                               
+                              
+                            
+                            <div class="text7"><span>from only<br /><i>675.99</i>/m</span></div>
+                                </div>
+                        </div>
+                        </div>
+                        </div>
+<div class="container">
+                
+                    <div class = 'slideSelectors'>
+                    
+                        <div class = 'item selected'></div>
+                        
+                        <div class = 'item'></div>
+                        
+
+                    </div>
+                
+                </div>
                         </div>
                         
                         
@@ -369,7 +508,24 @@
                     <li>
                         <p>I am thankful to the technical team of SAINET, which they have taken care of complete wifi facility in our hotel, with high up and running. The router which they have placed in proper way helps the customer to access easily in entire hotel. They are highly specialised people in setting up the internet accessibility.</p>
                         <div class="who_peoarea">
-                        <img src="new images/client4.jpg" alt="" class="client_img" />
+                        <img src="new images/client4.jpg" alt="" class="client_img" style="height: 49px;"/>
+                        <strong>Sun n Sand <em>(www.website.com)</em> <i>customer</i></strong>
+                        </div>
+                    </li> 
+                    
+                     <li>
+                        <p>Honesty in the work which i have to appreciate the SAINET team, the way they have organised and arranged the complete set up of the WIFI in the hotel is lot of appreciatable. All clients and staff are happy with the wifi accesibility.</p>
+                        <div class="who_peoarea">
+                        <img src="new images/client2.png" alt="" class="client_img" style="height: 49px;"/>
+                        <strong>Sun n Sand <em>(www.website.com)</em> <i>customer</i></strong>
+                        </div>
+                    </li> 
+                    
+
+                     <li>
+                        <p>/SAINET team is most technical and highly cultured team, whenever we struct in any problem we had a call with the customer care executive the next hour they have fixed the problem and gave the high access to internet. The speed of the internet is awesome!!!</p>
+                        <div class="who_peoarea">
+                        <img src="new images/client1.jpg" alt="" class="client_img" style="height: 49px;"/>
                         <strong>Sun n Sand <em>(www.website.com)</em> <i>customer</i></strong>
                         </div>
                     </li> 
